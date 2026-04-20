@@ -90,7 +90,7 @@ function unflipCards() {
             resetTurn();
         }, 500);
 
-    }, 300); 
+    }, 200); 
 }
 
 function resetTurn() {
@@ -107,7 +107,7 @@ function startGame() {
     timerInterval = setInterval(() => {
         seconds++;
         timerDisplay.innerText = seconds;
-    }, 300);
+    }, 200);
 
     startBtn.innerText = "RESET";
 }
@@ -119,7 +119,7 @@ function endGame() {
     setTimeout(() => {
         modal.classList.remove('hidden');
         finalMessage.innerText = `TEMPO: ${seconds}s`;
-    }, 300);
+    }, 200);
 }
 
 function resetGame() {
