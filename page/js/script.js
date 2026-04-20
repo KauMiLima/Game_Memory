@@ -75,9 +75,9 @@ function checkForMatch() {
 function unflipCards() {
     lockBoard = true;
     
-    // ESPERA 1 SEGUNDO conforme solicitado antes de vibrar e balançar
+   
     setTimeout(() => {
-        // Agora dispara a vibração intensa e o erro visual
+       
         if (navigator.vibrate) navigator.vibrate(200);
         
         firstCard.classList.add('shake');
