@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Arcade Memory Game</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <header class="game-info">
+            <h1>NEON MEMORY</h1>
+            <div class="stats">
+                <button id="start-btn">INICIAR JOGO</button>
+                <p>TEMPO: <span id="timer">0</span>s</p>
+            </div>
+        </header>
+        
+        <div id="game-board" class="grid"></div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>PARABÉNS!</h2>
+            <p id="final-message"></p>
+            <button onclick="resetGame()">JOGAR NOVAMENTE</button>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
