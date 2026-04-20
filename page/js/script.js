@@ -88,9 +88,9 @@ function unflipCards() {
             firstCard.classList.remove('visible', 'shake');
             secondCard.classList.remove('visible', 'shake');
             resetTurn();
-        }, 800);
+        }, 500);
 
-    }, 500); 
+    }, 300); 
 }
 
 function resetTurn() {
@@ -107,7 +107,7 @@ function startGame() {
     timerInterval = setInterval(() => {
         seconds++;
         timerDisplay.innerText = seconds;
-    }, 500);
+    }, 300);
 
     startBtn.innerText = "RESET";
 }
@@ -119,7 +119,7 @@ function endGame() {
     setTimeout(() => {
         modal.classList.remove('hidden');
         finalMessage.innerText = `TEMPO: ${seconds}s`;
-    }, 500);
+    }, 300);
 }
 
 function resetGame() {
