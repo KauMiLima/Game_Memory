@@ -42,7 +42,7 @@ function createBoard() {
 function flipCard() {
     if (lockBoard || this === firstCard || this.classList.contains('visible')) return;
 
-    // Feedback de clique imediato (muito curto)
+    // Feedback de clique imediato 
     if (navigator.vibrate) navigator.vibrate(15);
 
     this.classList.add('visible');
