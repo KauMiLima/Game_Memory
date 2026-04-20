@@ -107,7 +107,7 @@ function startGame() {
     timerInterval = setInterval(() => {
         seconds++;
         timerDisplay.innerText = seconds;
-    }, 200);
+    }, 1000);
 
     startBtn.innerText = "RESET";
 }
