@@ -2,10 +2,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Arcade Memory Game</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -19,6 +19,7 @@
         </header>
         
         <div id="game-board" class="grid"></div>
+
         <footer class="copyright">
             <p>&copy; 2026 Kauã - Todos os direitos reservados</p>
         </footer>
@@ -28,7 +29,7 @@
         <div class="modal-content">
             <h2>PARABÉNS!</h2>
             <p id="final-message"></p>
-            <button onclick="resetGame()">JOGAR NOVAMENTE</button>
+            <button id="start-btn" onclick="resetGame()">JOGAR NOVAMENTE</button>
         </div>
     </div>
 

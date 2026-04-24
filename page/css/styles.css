@@ -1,241 +1,192 @@
-
-
 :root {
-    --bg-color: #020202;
-    --card-back: #0f0f0f;
-    --neon-blue: #00d2ff;
-    --neon-pink: #ff00ff;
-    --neon-purple: #9d00ff;
-    --neon-error: #ff0033;
-    --text-color: #ffffff;
+  --bg-color: #020202;
+  --card-back: #0f0f0f;
+  --neon-blue: #00d2ff;
+  --neon-pink: #ff00ff;
+  --neon-purple: #9d00ff;
+  --neon-error: #ff0033;
+  --text-color: #ffffff;
 }
 
-/* Reset e Configurações Base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
-    position: relative;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
 }
 
-
+/* Efeito CRT Scanlines */
 body::before {
-    content: " ";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.2) 50%
-    );
-    background-size: 100% 4px;
-    z-index: 100;
-    pointer-events: none;
-    opacity: 0.4;
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-size: 100% 4px;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.4;
 }
-
 
 .game-container {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
 }
 
-/* Cabeçalho e Stats */
 .game-info h1 {
-    font-size: clamp(1.8rem, 8vw, 3rem);
-    color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
-    letter-spacing: 4px;
-    margin-bottom: 10px;
+  font-size: clamp(1.8rem, 8vw, 3rem);
+  color: var(--neon-blue);
+  text-shadow:
+    0 0 10px var(--neon-blue),
+    0 0 20px var(--neon-purple);
+  letter-spacing: 4px;
 }
 
 .stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
 }
 
 #start-btn {
-    background: transparent;
-    border: 2px solid var(--neon-pink);
-    color: var(--neon-pink);
-    padding: 8px 18px;
-    font-family: inherit;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 0 8px var(--neon-pink);
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: transparent;
+  border: 2px solid var(--neon-pink);
+  color: var(--neon-pink);
+  padding: 8px 18px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--neon-pink);
 }
-
-#start-btn:hover {
-    background: var(--neon-pink);
-    color: #fff;
-    box-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
-    transform: scale(1.05);
-}
-
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(8px, 2.5vw, 15px);
-    padding: clamp(10px, 3vw, 20px);
-    border: 3px solid var(--neon-purple);
-    box-shadow: 0 0 15px var(--neon-purple), inset 0 0 15px var(--neon-purple);
-    background: rgba(157, 0, 255, 0.05);
-    border-radius: 4px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 2.5vw, 15px);
+  padding: 15px;
+  border: 3px solid var(--neon-purple);
+  box-shadow:
+    0 0 15px var(--neon-purple),
+    inset 0 0 15px var(--neon-purple);
+  background: rgba(157, 0, 255, 0.05);
 }
 
-
 .card {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    perspective: 1000px;
-    cursor: pointer;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
 }
 
 .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s ease-in-out;
-    transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
 }
 
 .card.visible .card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.card-back, .card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid;
-    border-radius: 4px;
-    font-size: clamp(1.5rem, 6vw, 2.8rem);
+.card-back,
+.card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  border-radius: 4px;
+  font-size: clamp(1.5rem, 6vw, 2.8rem);
 }
 
 .card-back {
-    background-color: var(--card-back);
-    border-color: var(--neon-blue);
-    color: var(--neon-blue);
-    box-shadow: inset 0 0 10px var(--neon-blue);
+  background-color: var(--card-back);
+  border-color: var(--neon-blue);
+  box-shadow: inset 0 0 10px var(--neon-blue);
 }
 
 .card-front {
-    background-color: #050505;
-    border-color: var(--neon-pink);
-    transform: rotateY(180deg);
-    box-shadow: inset 0 0 10px var(--neon-pink);
+  background-color: #050505;
+  border-color: var(--neon-pink);
+  transform: rotateY(180deg);
 }
 
-/* Efeito de Erro (Shake) */
+/* Shake de Erro */
 @keyframes shake {
-    0%, 100% { transform: translateX(0) rotateY(180deg); }
-    20% { transform: translateX(-8px) rotateY(180deg); }
-    40% { transform: translateX(8px) rotateY(180deg); }
-    60% { transform: translateX(-8px) rotateY(180deg); }
-    80% { transform: translateX(8px) rotateY(180deg); }
+  0%,
+  100% {
+    transform: translateX(0) rotateY(180deg);
+  }
+  25% {
+    transform: translateX(-8px) rotateY(180deg);
+  }
+  75% {
+    transform: translateX(8px) rotateY(180deg);
+  }
 }
-
 .shake .card-inner {
-    animation: shake 0.4s ease-in-out;
+  animation: shake 0.4s ease-in-out;
 }
-
 .shake .card-front {
-    border-color: var(--neon-error) !important;
-    box-shadow: 0 0 20px var(--neon-error), inset 0 0 10px var(--neon-error) !important;
+  border-color: var(--neon-error) !important;
+  box-shadow:
+    0 0 15px var(--neon-error),
+    inset 0 0 10px var(--neon-error) !important;
 }
-
 
 .copyright {
-    margin-top: 25px;
-    font-size: 0.75rem;
-    color: var(--neon-blue);
-    text-shadow: 0 0 5px var(--neon-blue);
-    opacity: 0.7;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: 0.3s;
+  margin-top: 25px;
+  font-size: 0.75rem;
+  color: var(--neon-blue);
+  text-shadow: 0 0 5px var(--neon-blue);
+  opacity: 0.7;
+  letter-spacing: 2px;
 }
 
-.copyright:hover {
-    opacity: 1;
-    color: var(--neon-pink);
-    text-shadow: 0 0 10px var(--neon-pink);
-}
-
-/* Modal de Vitória */
 .modal {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
 }
 
 .modal-content {
-    background: #000;
-    padding: clamp(20px, 5vw, 40px);
-    border: 4px solid var(--neon-blue);
-    box-shadow: 0 0 30px var(--neon-blue);
-    text-align: center;
-    width: 85%;
-    max-width: 350px;
+  background: #000;
+  padding: 40px;
+  border: 4px solid var(--neon-blue);
+  text-align: center;
 }
 
-.modal-content h2 {
-    color: var(--neon-pink);
-    text-shadow: 0 0 10px var(--neon-pink);
-    margin-bottom: 15px;
-}
-
-.modal-content button {
-    margin-top: 20px;
-    background: transparent;
-    border: 2px solid var(--neon-blue);
-    color: var(--neon-blue);
-    padding: 10px 20px;
-    cursor: pointer;
-    font-family: inherit;
-    text-transform: uppercase;
-}
-
-.hidden { display: none; }
-
-
-@media (max-width: 360px) {
-    .grid { gap: 5px; padding: 10px; }
-    .game-info h1 { letter-spacing: 2px; }
+.hidden {
+  display: none;
 }
