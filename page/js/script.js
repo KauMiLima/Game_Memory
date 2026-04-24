@@ -138,7 +138,6 @@ function endGame() {
 
   if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 300]);
 
-  // Seu ajuste de tempo: 200ms
   setTimeout(() => {
     modal.classList.remove("hidden");
     finalMessage.innerText = `TEMPO: ${seconds}s`;
